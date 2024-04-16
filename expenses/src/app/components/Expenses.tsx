@@ -22,7 +22,9 @@ const Expenses = () => {
       name: newName,
       cost: newCost,
     };
-    api.postExpenses(expenseObject);
+    api.postExpenses(expenseObject).then(fetchExpenses);
+    setNewName("");
+    setNewCost("");
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
