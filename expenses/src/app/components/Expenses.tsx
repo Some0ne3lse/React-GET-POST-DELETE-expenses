@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Expense } from "../types/types";
 import { api } from "../api/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const Expenses = () => {
   const [expenses, setExpenses] = useState<Expense[]>();
@@ -20,7 +22,7 @@ const Expenses = () => {
     event.preventDefault();
     const expenseObject = {
       name: newName,
-      cost: newCost,
+      cost: +newCost,
     };
     api.postExpenses(expenseObject).then(fetchExpenses);
     setNewName("");
@@ -33,6 +35,10 @@ const Expenses = () => {
 
   const handleCostChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewCost(event.target.value);
+  };
+
+  const handleDelete = (id: number) => {
+    api.deleteExpense(id).then(fetchExpenses);
   };
 
   return (
@@ -67,8 +73,14 @@ const Expenses = () => {
           </form>
           <h1>Stats</h1>
           <div className="stats">
-            <p>Sum</p>
-            <p>Count</p>
+            <p>
+              Sum{" "}
+              {expenses?.reduce(
+                (accumulator, currentValue) => accumulator + currentValue.cost,
+                0
+              )}
+            </p>
+            <p>Count {expenses?.length}</p>
           </div>
         </div>
         <div className="content">
@@ -79,7 +91,11 @@ const Expenses = () => {
                   <div className="card-name">Name: {expense.name}</div>
                   <div className="card-cost">Cost: {expense.cost}</div>
                 </div>
-                <button>Delete</button>
+                <FontAwesomeIcon
+                  icon={faX}
+                  onClick={() => handleDelete(expense.id)}
+                  style={{ cursor: "pointer" }}
+                />
               </li>
             ))}
           </ul>
