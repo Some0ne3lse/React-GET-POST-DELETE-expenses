@@ -54,6 +54,7 @@ const Expenses = () => {
               value={newName}
               onChange={handleNameChange}
               className="name-input"
+              autoComplete="name"
               required
             />
             <p className="cost-text">Cost</p>

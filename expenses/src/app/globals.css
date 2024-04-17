@@ -40,7 +40,7 @@ body,
   width: 80%;
   margin: 5%;
   color: white;
-  grid-gap: 10px;
+  grid-gap: 0.7em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -88,7 +88,7 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 1em;
   width: 100%;
 }
 
@@ -108,7 +108,7 @@ body,
 
 .card-name {
   display: flex;
-  gap: 5px;
+  gap: 0.4em;
 }
 
 .card-name-text {
@@ -117,7 +117,7 @@ body,
 
 .card-cost {
   display: flex;
-  gap: 5px;
+  gap: 0.4em;
 }
 
 .card-cost-text {
