@@ -8,7 +8,6 @@ const getExpenses = async (): Promise<Expense[]> => {
   }
 
   const response = await res.json();
-  console.log("getting expenses", response);
   return response;
 };
 
@@ -26,7 +25,6 @@ const postExpenses = async (expense: object): Promise<Expense[]> => {
   }
 
   const response = await res.json();
-  console.log(response);
   return response;
 };
 
@@ -43,7 +41,6 @@ const deleteExpense = async (id: number): Promise<Expense[]> => {
   }
 
   const response = await res.json();
-  console.log(response);
   return response;
 };
 
