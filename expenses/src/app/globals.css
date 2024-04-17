@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
+  background-color: rgb(35, 39, 41);
+}
+
+.entire-screen {
+  height: 100%;
+}
+
+.contents {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.input,
+.contents-card {
+  margin: 5%;
+  width: 100%;
+}
+
+.header {
+  color: rgb(107, 215, 163);
+  font-weight: normal;
+}
+
+.form {
+  width: 80%;
+  margin: 5%;
+  color: white;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.name-text {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.name-input {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+
+.cost-text {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.cost-input {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.add-button {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  width: 4em;
+}
+
+.stats {
+  width: 80%;
+  margin: 5%;
+  color: white;
+}
+
+.contents-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.card {
+  border: solid 2px rgb(107, 215, 163);
+  width: 75%;
+  display: flex;
+  height: 4em;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+
+.card-text {
+  color: white;
+  align-self: center;
+}
+
+.card-name {
+  display: flex;
+  gap: 5px;
+}
+
+.card-name-text {
+  font-weight: bold;
+}
+
+.card-cost {
+  display: flex;
+  gap: 5px;
+}
+
+.card-cost-text {
+  font-weight: bold;
+}
+
+.icon {
+  color: red;
+}
