@@ -1,9 +1,9 @@
-"use client";
 import { useEffect, useState } from "react";
 import { Expense } from "../types/types";
 import { api } from "../api/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Expenses = () => {
   const [expenses, setExpenses] = useState<Expense[]>();
@@ -84,26 +84,35 @@ const Expenses = () => {
         </div>
         <div className="contents-card">
           <ul className="expenses-list">
-            {expenses?.map((expense) => (
-              <li key={expense.id} className="card">
-                <div className="card-text">
-                  <div className="card-name">
-                    <div className="card-name-text">Name: </div>
-                    <div>{expense.name}</div>
+            <AnimatePresence>
+              {expenses?.map((expense) => (
+                <motion.li
+                  key={expense.id}
+                  initial={{ opacity: 0, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="card"
+                >
+                  <div className="card-text">
+                    <div className="card-name">
+                      <div className="card-name-text">Name: </div>
+                      <div>{expense.name}</div>
+                    </div>
+                    <div className="card-cost">
+                      <div className="card-cost-text">Cost: </div>
+                      <div>{expense.cost}</div>
+                    </div>
                   </div>
-                  <div className="card-cost">
-                    <div className="card-cost-text">Cost: </div>
-                    <div>{expense.cost}</div>
-                  </div>
-                </div>
-                <FontAwesomeIcon
-                  icon={faX}
-                  onClick={() => handleDelete(expense.id)}
-                  style={{ cursor: "pointer" }}
-                  className="icon"
-                />
-              </li>
-            ))}
+                  <FontAwesomeIcon
+                    icon={faX}
+                    onClick={() => handleDelete(expense.id)}
+                    style={{ cursor: "pointer" }}
+                    className="icon"
+                  />
+                </motion.li>
+              ))}
+            </AnimatePresence>
           </ul>
         </div>
       </div>
